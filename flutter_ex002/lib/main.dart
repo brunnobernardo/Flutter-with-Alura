@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,17 +14,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 107, 10, 124),
             leading: Container(
               child: Icon(Icons.account_circle),
             ),
             title: Text('Controle de ponto'),
           ),
           body: ListView(children: [
-            mainContainer('08/05', 'Monday'),
-            mainContainer('09/05', 'Tuesday'),
-            mainContainer('10/05', 'Wednesday'),
-            mainContainer('11/05', 'Thursday'),
-            mainContainer('12/05', 'Friday')
+            imageContainer(),
+            countHours('08/05', 'Monday'),
+            countHours('09/05', 'Tuesday'),
+            countHours('10/05', 'Wednesday'),
+            countHours('11/05', 'Thursday'),
+            countHours('12/05', 'Friday'),
           ])
           // body
           ),
@@ -30,27 +34,44 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class mainContainer extends StatefulWidget {
-  final String date;
-  final String day;
-  const mainContainer(this.date, this.day, {Key? key}) : super(key: key);
+class imageContainer extends StatelessWidget {
+  const imageContainer({super.key});
 
   @override
-  State<mainContainer> createState() => _MyWidgetState();
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.only(bottom: 5),
+        child: Container(
+          height: 200,
+          color: Color.fromARGB(255, 107, 10, 124),
+        ));
+  }
 }
 
-class _MyWidgetState extends State<mainContainer> {
+class countHours extends StatefulWidget {
+  final String date;
+  final String day;
+  const countHours(this.date, this.day, {Key? key}) : super(key: key);
+
+  @override
+  State<countHours> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<countHours> {
   int hours = 0;
   int workload = 10;
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.all(10),
         child: Stack(
           children: [
             Container(
-              height: 100,
-              color: Colors.grey,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color.fromARGB(255, 146, 145, 145),
+                  border: Border.all(width: 1.5, color: Colors.black)),
+              height: 110,
               child: Row(
                 children: [
                   Column(
@@ -84,7 +105,7 @@ class _MyWidgetState extends State<mainContainer> {
                         width: 155,
                         height: 50,
                         child: Text(
-                          'Trabalhando: ${hours}h',
+                          'Trabalhado: ${hours}h',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -99,14 +120,20 @@ class _MyWidgetState extends State<mainContainer> {
                       ),
                     ],
                   ),
-                  Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border:
+                                  Border.all(width: 2.0, color: Colors.black)),
                           height: 30,
+                          width: 55,
                           child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 107, 10, 124))),
                               onPressed: () {
                                 setState(() {
                                   hours++;
@@ -123,8 +150,16 @@ class _MyWidgetState extends State<mainContainer> {
                                   ])),
                         ),
                         Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border:
+                                  Border.all(width: 2.0, color: Colors.black)),
                           height: 30,
+                          width: 55,
                           child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 107, 10, 124))),
                               onPressed: () {
                                 setState(() {
                                   hours--;
@@ -140,7 +175,7 @@ class _MyWidgetState extends State<mainContainer> {
                                     )
                                   ])),
                         )
-                      ]))
+                      ])
                 ],
               ),
             ),
