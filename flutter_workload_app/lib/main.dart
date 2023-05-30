@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:core';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
             leading: Container(
               child: Icon(Icons.account_circle),
             ),
-            title: Text('Controle de ponto'),
+            title: Text('Worload'),
           ),
           body: ListView(children: [
             countHours('08/05', 'Monday'),
@@ -102,7 +103,7 @@ class _MyWidgetState extends State<countHours> {
                         width: 155,
                         height: 50,
                         child: Text(
-                          'Trabalhado: ${hours}h',
+                          'Worked: ${hours}h',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -111,7 +112,7 @@ class _MyWidgetState extends State<countHours> {
                         width: 150,
                         height: 25,
                         child: Text(
-                          'Saldo: ${hours - workload}h ',
+                          'Balance: ${hours - workload}h ',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
