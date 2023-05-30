@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,7 +19,6 @@ class MyApp extends StatelessWidget {
             title: Text('Controle de ponto'),
           ),
           body: ListView(children: [
-            imageContainer(),
             countHours('08/05', 'Monday'),
             countHours('09/05', 'Tuesday'),
             countHours('10/05', 'Wednesday'),

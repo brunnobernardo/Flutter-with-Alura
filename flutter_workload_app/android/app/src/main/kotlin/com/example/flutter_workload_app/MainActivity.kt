@@ -1,4 +1,4 @@
-package com.example.flutter_ex002
+package com.example.flutter_workload_app
 
 import io.flutter.embedding.android.FlutterActivity
 
