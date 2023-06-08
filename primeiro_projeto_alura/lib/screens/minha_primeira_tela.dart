@@ -1,5 +1,3 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class MyFirstWidget extends StatelessWidget {
@@ -65,7 +63,7 @@ class MyFirstWidget extends StatelessWidget {
                 color: Colors.amber,
                 height: 30,
                 width: 300,
-                child: Text(
+                child: const Text(
                   'Diamante Amarelo',
                   style: TextStyle(
                     color: Colors.black,
@@ -76,9 +74,9 @@ class MyFirstWidget extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    print('Você apertou o botão');
+                   // print('Você apertou o botão');
                   },
-                  child: Text('Aperte o botão!!'))
+                  child: const Text('Aperte o botão!!'))
             ]));
   }
 }
