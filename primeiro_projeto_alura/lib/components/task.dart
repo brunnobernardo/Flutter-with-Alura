@@ -14,7 +14,7 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   int level = 0;
-
+  int mastery = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,10 +23,10 @@ class _TaskState extends State<Task> {
           children: [
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.blue),
+                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
               height: 140,
             ),
+            Difficulty(dificultyLevel: widget.dificuldade, masteryLevel: funcMasteryDifficulty(widget.dificuldade, level, mastery)),
             Column(children: [
               Container(
                 decoration: BoxDecoration(
@@ -66,9 +66,6 @@ class _TaskState extends State<Task> {
                                 ),
                               ),
                             ),
-                            Difficulty(
-                              dificultyLevel: widget.dificuldade,
-                            ),
                           ]),
                       SizedBox(
                         height: 52,
@@ -78,7 +75,7 @@ class _TaskState extends State<Task> {
                               setState(() {
                                 level++;
                               });
-                             //print(level);
+                              //print(level);
                             },
                             child: Column(
                                 mainAxisAlignment:
@@ -91,31 +88,29 @@ class _TaskState extends State<Task> {
                       ),
                     ]),
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: SizedBox(
-                        child: LinearProgressIndicator(
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: SizedBox(
+                      width: 200,
+                      child: LinearProgressIndicator(
                           color: Colors.white,
                           value: (widget.dificuldade > 0)
                               ? (level / widget.dificuldade) / 10
-                              : 1,
-                        ),
-                        width: 200,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        'Nivel: $level',
-                        style: const TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
-                  ])
+                              : 1)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    'Nivel: $level',
+                    style: const TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
+              ])
             ])
           ],
         ));
   }
 }
+
+
