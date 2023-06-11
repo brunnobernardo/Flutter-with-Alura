@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class Difficulty extends StatelessWidget {
   final int dificultyLevel;
-  final int masteryLevel;
 
   const Difficulty({
-    required this.dificultyLevel, required this.masteryLevel,
+    required this.dificultyLevel,
     Key? key,
   }) : super(key: key);
 
@@ -31,20 +30,19 @@ class Difficulty extends StatelessWidget {
   }
 }
 
-funcMasteryDifficulty(int difficult, int level, int mastery) {
-  if (difficult == 1 && level >= 10 ||
+funcMasteryDifficulty(int difficult, int level) {
+  if (difficult == 1 && level == 10 ||
       difficult == 2 && level == 20 ||
       difficult == 3 && level == 30 ||
       difficult == 4 && level == 40 ||
       difficult == 5 && level == 50) {
-    return mastery == 1;
-  }
-
-  /*else if (difficult == 1 && level >= 20 ||
+    return 1;
+  } else if (difficult == 1 && level >= 20 ||
       difficult == 2 && level == 40 ||
       difficult == 3 && level == 60 ||
       difficult == 4 && level == 80 ||
       difficult == 5 && level == 100) {
-    return mastery == 2; 
-    } */
-}
+    return 2; 
+    } 
+    return 0;
+} 

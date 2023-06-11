@@ -1,4 +1,4 @@
-import 'package:primeiro_projeto_alura/screens/initial_screen.dart';
+import 'package:projeto_alura/screens/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +14,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-  bool opacidade = true;
   @override
+  bool opacidade = true;
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -26,5 +26,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 
 
